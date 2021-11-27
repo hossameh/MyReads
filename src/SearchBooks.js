@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import {Link} from 'react-router-dom'
 import Book from './Book'
-import './App.css'
 
 const SearchBooks = (props)=>{
 
@@ -68,4 +67,4 @@ return(
         )
 
 }
-export default SearchBooks
+export default SearchBooks;
