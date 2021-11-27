@@ -52,14 +52,16 @@ const updateShelf =(book,shelf)=>{
   return (
       <div className="app">
                  
-<Routes>
+        <Routes>
            <Route path='/search' 
-            element={()=>(
+            render={()=>(
             <SearchBooks  storedBooks={books} onUpdateShelf={updateShelf} />
-           )} />
+           )} >
+
+           </Route>
 
            <Route exact path='/'
-           element={()=>(
+           render={()=>(
             
         <div className="list-books">
             <div className="list-books-title">
@@ -85,8 +87,10 @@ const updateShelf =(book,shelf)=>{
               </div>
             </div>
             </div>
-           ) } />
-</Routes>
+           ) } >
+
+           </Route>
+         </Routes>
           
           
             <div className="open-search">
