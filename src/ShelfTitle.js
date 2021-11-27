@@ -9,4 +9,4 @@ const ShelfTitle = (props)=>{
     )
 }
 
-export default ShelfTitle;
+export default ShelfTitle

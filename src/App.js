@@ -12,8 +12,10 @@ const BooksApp =()=>{
   let [books,setBooks]=useState([]);
   let [flip,setFlip]=useState(true);
 
-  useEffect( ()=>{
-    BooksAPI.getAll().then((books)=>{setBooks(books)})
+  useEffect( 
+    ()=>{
+    BooksAPI.getAll().then((books)=>
+    {setBooks(books)})
   },[]);
 
 const updateShelf =(book,shelf)=>{
@@ -59,8 +61,10 @@ const updateShelf =(book,shelf)=>{
            <Route exact path='/'
            render={()=>(
             
-        <div className="list-books">\
-            <ShelfTitle />
+        <div className="list-books">
+            <div className="list-books-title">
+            <h1>My Reads</h1>
+            </div>
             <div className="list-books-content">
               <div>
                 <BooksShelf 

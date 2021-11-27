@@ -12,9 +12,9 @@ const BooksShelf = (props)=>{
     }
 
     return (
-      
+    
         <div className="bookshelf">
-         
+         {console.log(props.books)}
                   <h2 className="bookshelf-title">{props.title}</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
