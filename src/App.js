@@ -1,26 +1,25 @@
 import React, { useState,useEffect } from 'react'
 import {Route, Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import SearchBooks from './SearchBooks'
-import ShelfTitle from './ShelfTitle'
-import BooksShelf from './BookShelf'
+import MyReadsSearch from './MyReadsSearch'
+import MyReadsShelf from './MyReadsShelf'
 
 import './App.css'
 
 const BooksApp =()=>{
 
-  let [books,setBooks]=useState([]);
-  let [flip,setFlip]=useState(true);
+  let [myReadsBooks,myReadsSetBooks]=useState([]);
+  let [myReadsFlip,myReadsSetFlip]=useState(true);
 
   useEffect( 
     ()=>{
-    BooksAPI.getAll().then((books)=>
-    {setBooks(books)})
+    BooksAPI.getAll().then((myReadsBooks)=>
+    {myReadsSetBooks(myReadsBooks)})
   },[]);
 
 const updateShelf =(book,shelf)=>{
-  const updateIndex = books.findIndex((b)=> b.id === book.id)
-  const updatedBookList = books;
+  const updateIndex = myReadsBooks.findIndex((b)=> b.id === book.id)
+  const updatedBookList = myReadsBooks;
 
   if(updateIndex === -1)
     {
@@ -31,51 +30,42 @@ const updateShelf =(book,shelf)=>{
       updatedBookList[updateIndex].shelf=shelf
     }
 
-    setBooks(updatedBookList);
+    myReadsSetBooks(updatedBookList);
 
     BooksAPI.update(book,shelf);
-    setFlip(!flip)
+    myReadsSetFlip(!myReadsFlip)
 
 }
-
-
-  // state = {
-  //   /**
-  //    * TODO: Instead of using this state variable to keep track of which page
-  //    * we're on, use the URL in the browser's address bar. This will ensure that
-  //    * users can use the browser's back and forward buttons to navigate between
-  //    * pages, as well as provide a good URL they can bookmark and share.
-  //    */
-  //   showSearchPage: false
-  // }
 
   return (
       <div className="app">
            <Route path='/search' 
             render={()=>(
-            <SearchBooks  storedBooks={books} onUpdateShelf={updateShelf} />
+            <MyReadsSearch  storedBooks={myReadsBooks} onUpdateShelf={updateShelf} />
            )} />
 
            <Route exact path='/'
            render={()=>(
             
         <div className="list-books">
-           <ShelfTitle/>
+           <div className="list-books-title">
+            <h1>My Reads</h1>
+            </div>
             <div className="list-books-content">
               <div>
-                <BooksShelf 
+                <MyReadsShelf 
                  className="bookshelf" title="Currently Reading"
-                 books={books.filter((book) => book.shelf==="currentlyReading") }
+                 myReadsBooks={myReadsBooks.filter((book) => book.shelf==="currentlyReading") }
                  updateShelf={updateShelf} />
 
-                <BooksShelf 
+                <MyReadsShelf 
                  className="bookshelf" title="Want to Read"
-                 books={books.filter((book) => book.shelf==="wantToRead") }
+                 myReadsBooks={myReadsBooks.filter((book) => book.shelf==="wantToRead") }
                  updateShelf={updateShelf} />
 
-                <BooksShelf 
+                <MyReadsShelf 
                  className="bookshelf" title="Read"
-                 books={books.filter((book) => book.shelf==="read") }
+                 myReadsBooks={myReadsBooks.filter((book) => book.shelf==="read") }
                  updateShelf={updateShelf} />
 
               </div>

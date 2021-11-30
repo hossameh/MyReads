@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const BookShelfChanger = (props)=>{
+const MyReadsShelfChanger = (props)=>{
 
-    BookShelfChanger.protoTypes={
+  MyReadsShelfChanger.protoTypes={
         onUpdateShelf:PropTypes.func.isRequired,
         bookItem:PropTypes.object.isRequired
     }
@@ -23,5 +23,5 @@ const BookShelfChanger = (props)=>{
   </div>)
 }
 
-export default BookShelfChanger
+export default MyReadsShelfChanger
 

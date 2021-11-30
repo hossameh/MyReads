@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BookShelfChanger from './BookShelfChanger'
+import MyReadsShelfChanger from './MyReadsShelfChanger'
 
-const Book = (props)=>{
+const MyReadsBook = (props)=>{
 
-    Book.protoTypes={
+  MyReadsBook.protoTypes={
         onUpdateShelf:PropTypes.func.isRequired,
         bookItem:PropTypes.object.isRequired
     }
@@ -18,7 +18,7 @@ const Book = (props)=>{
             backgroundImage: ((props.bookItem.imageLinks && props.bookItem.imageLinks.smallThumbnail)?`url(${props.bookItem.imageLinks.smallThumbnail})`:"none" )}}>
 
             </div>
-            <BookShelfChanger 
+            <MyReadsShelfChanger 
              onUpdateShelf={props.onUpdateShelf}
              bookItem={props.bookItem}
              shelf={props.bookItem.shelf}
@@ -32,4 +32,4 @@ const Book = (props)=>{
       )
 }
 
-export default Book;
+export default MyReadsBook;

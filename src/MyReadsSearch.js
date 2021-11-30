@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import {Link} from 'react-router-dom'
-import Book from './Book'
+import MyReadsBook from './MyReadsBook'
 
-const SearchBooks = (props)=>{
+const MyReadsSearch = (props)=>{
 
-    SearchBooks.PropTypes={
+  MyReadsSearch.PropTypes={
         storedBooks: PropTypes.array.isRequired,
         onUpdateShelf:PropTypes.func.isRequired
     }
@@ -53,7 +53,7 @@ return(
             <div className="search-books-results">
               <ol className="books-grid">
                 {searchedBooks && searchedBooks.length > 0 
-                && searchedBooks.map((book)=> (<Book key={book.id} onUpdateShelf={props.onUpdateShelf} bookItem={book} />))
+                && searchedBooks.map((book)=> (<MyReadsBook key={book.id} onUpdateShelf={props.onUpdateShelf} bookItem={book} />))
             }
               </ol>
             </div>
@@ -61,4 +61,4 @@ return(
         )
 
 }
-export default SearchBooks;
+export default MyReadsSearch;

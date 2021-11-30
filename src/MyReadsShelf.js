@@ -1,24 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Book from './Book'
+import Book from './MyReadsBook'
 
 
-const BooksShelf = (props)=>{
+const MyReadsShelf = (props)=>{
 
-    BooksShelf.propTypes={
+  MyReadsShelf.propTypes={
         title:PropTypes.string.isRequired,
-        books:PropTypes.array.isRequired,
+        myReadsBooks:PropTypes.array.isRequired,
         updateShelf:PropTypes.func.isRequired
     }
 
     return (
     
         <div className="bookshelf">
-         {console.log(props.books)}
                   <h2 className="bookshelf-title">{props.title}</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                        {props.books.map((book)=>
+                        {props.myReadsBooks.map((book)=>
                          <Book key={book.id}
                          onUpdateShelf={props.updateShelf}
                          bookItem={book}
@@ -29,4 +28,4 @@ const BooksShelf = (props)=>{
     )
 }
 
-export default BooksShelf
+export default MyReadsShelf
