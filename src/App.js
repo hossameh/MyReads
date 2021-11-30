@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import {Route,Routes, Link} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import SearchBooks from './SearchBooks'
 import ShelfTitle from './ShelfTitle'
@@ -24,7 +24,7 @@ const updateShelf =(book,shelf)=>{
 
   if(updateIndex === -1)
     {
-      book.shelf = shelf;
+      book.shelf = shelf
       updatedBookList.push(book)
     }else
     {
@@ -51,51 +51,40 @@ const updateShelf =(book,shelf)=>{
 
   return (
       <div className="app">
-                 
-        <Routes>
            <Route path='/search' 
             render={()=>(
             <SearchBooks  storedBooks={books} onUpdateShelf={updateShelf} />
-           )} >
-
-           </Route>
+           )} />
 
            <Route exact path='/'
            render={()=>(
             
         <div className="list-books">
-            <div className="list-books-title">
-            <h1>My Reads</h1>
-            </div>
+           <ShelfTitle/>
             <div className="list-books-content">
               <div>
                 <BooksShelf 
                  className="bookshelf" title="Currently Reading"
-                 books={books.filter((book) => book.shelf="currentlyReading") }
+                 books={books.filter((book) => book.shelf==="currentlyReading") }
                  updateShelf={updateShelf} />
 
                 <BooksShelf 
                  className="bookshelf" title="Want to Read"
-                 books={books.filter((book) => book.shelf="wantToRead") }
+                 books={books.filter((book) => book.shelf==="wantToRead") }
                  updateShelf={updateShelf} />
 
                 <BooksShelf 
                  className="bookshelf" title="Read"
-                 books={books.filter((book) => book.shelf="read") }
+                 books={books.filter((book) => book.shelf==="read") }
                  updateShelf={updateShelf} />
 
               </div>
             </div>
-            </div>
-           ) } >
-
-           </Route>
-         </Routes>
-          
-          
             <div className="open-search">
-            <Link to='/search'>Add a book</Link>
+            <Link to="/search">Add a book</Link>
             </div>
+            </div>
+           ) } /> 
       </div>
         )}
 
