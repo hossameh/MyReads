@@ -6,7 +6,7 @@ import MyReadsBook from './MyReadsBook'
 
 const MyReadsSearch = (props)=>{
 
-  MyReadsSearch.PropTypes={
+  MyReadsSearch.propTypes={
         storedBooks: PropTypes.array.isRequired,
         onUpdateShelf:PropTypes.func.isRequired
     }
