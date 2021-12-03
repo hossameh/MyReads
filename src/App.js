@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import {Route, Link} from 'react-router-dom'
+import {Route,Switch, Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import MyReadsSearch from './MyReadsSearch'
 import MyReadsShelf from './MyReadsShelf'
@@ -39,6 +39,7 @@ const updateShelf =(book,shelf)=>{
 
   return (
       <div className="app">
+     <Switch>
            <Route path='/search' 
             render={()=>(
             <MyReadsSearch  storedBooks={myReadsBooks} onUpdateShelf={updateShelf} />
@@ -75,6 +76,7 @@ const updateShelf =(book,shelf)=>{
             </div>
             </div>
            ) } /> 
+     </Switch>
       </div>
         )}
 
